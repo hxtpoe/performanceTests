@@ -1,0 +1,8 @@
+language: php
+php:
+  - 5.4
+script: phpunit -c app/
+before_script:
+  - cp app/config/parameters.yml.dist app/config/parameters.yml
+  - composer install
+  - php app/console cache:clear --env=prod
