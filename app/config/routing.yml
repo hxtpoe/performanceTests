@@ -1,0 +1,5 @@
+iit_content:
+    resource: "@IITContentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
