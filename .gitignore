@@ -1,0 +1,10 @@
+/web/bundles/
+/app/bootstrap*
+/app/cache/*
+/vendor/
+/app/config/parameters.yml
+/cov/
+/.idea/
+._.DS*
+.DS*
+._*
