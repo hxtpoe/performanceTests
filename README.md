@@ -11,4 +11,4 @@ Enjoy and feel free to ask me a question.
 TOC
 ================
 00. [introduction to configure elements and test tree](https://github.com/hxtpoe/performanceTests/blob/master/scenarios/00-introduction/README.md)
-01. [testing simple static content page](https://github.com/hxtpoe/performanceTests/blob/master/scenarios/01-testing-static-page/README.md)
+01. [testing simple static content page](https://github.com/hxtpoe/performanceTests/blob/master/scenarios/01-sample%20request/README.md)
