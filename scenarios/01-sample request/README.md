@@ -10,7 +10,7 @@ Add "result tree" (blue color on following screen) element when you work on your
 
 On following screen you can see how to add HTTP sampler element. This is one way to add all samplers to your test. So this is first and last time when I commit the screen;) Next time I'll give you only a sampler name. If you use http request defaults form 00 lesson, you only have to specify your path in the test. In my app I have lorem ipsum page on address /. This is why  my path is emtpy.
 
-![alt tag](https://github.com/hxtpoe/performanceTests/blob/master/scenarios/01-sample%20request/images/01.00a.addingSampler.png)
+![alt tag](https://raw.github.com/hxtpoe/performanceTests/master/scenarios/01-sample%20request/images/01.00a.addingSampler.png)
 
 The most important think is to be sure about server response(following screen). If application is writen in realy bad way, it's possible that you see empty response with 200 response code. Always write simple assertion for your test. Your tests will be reliable. In the example response must contain header with "Lorem ipsum dolor sit amet" text.
 
