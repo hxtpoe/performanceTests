@@ -1,4 +1,4 @@
-Symfony2 Performance Tests using jMeter
+jMeter performance tests tutorial
 ================
 
 [documentation](http://hxtpoe.github.io/performanceTests/)
