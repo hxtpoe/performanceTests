@@ -16,4 +16,20 @@ class DefaultController extends Controller
     {
         return array();
     }
+    /**
+     * @Route("/list")
+     * @Template()
+     */
+    public function listPageAction()
+    {
+        return array();
+    }
+    /**
+     * @Route("/list{id}.html")
+     * @Template()
+     */
+    public function listPageShowAction($id)
+    {
+        return array('id' => $id);
+    }
 }

@@ -18,4 +18,26 @@ class DefaultControllerTest extends WebTestCase
             $client->getResponse()->getContent()
         ); // is h1's value equal?
     }
+    public function testListPage()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/list');
+        $this->assertTrue($client->getResponse()->isSuccessful()); // is 2xx?
+        $links = $crawler->filter('a');
+        $this->assertEquals(3, $links->count()); // does contain 3 links?
+    }
+    public function testListPageShow()
+    {
+        $singleTest = function($id) {
+            $client = static::createClient();
+            $crawler = $client->request('GET', '/list'.$id.'.html');
+            $this->assertTrue($client->getResponse()->isSuccessful()); // is 2xx?
+            $header = $crawler->filter('h1');
+            $this->assertEquals('List '.$id, $header->text()); // does contain 3 links?
+        };
+
+        for ($i = 1; $i <= 3; $i++) {
+            $singleTest($i);
+        }
+    }
 }
