@@ -36,13 +36,26 @@
     It'll be simple if you have basic knowledge of RegExp.
     If you don't know what the RegExp is, please look at <a href="http://www.regexbuddy.com/" rel="nofollow">RegexBuddy.com</a>.
     You need to add Regural Expression Extracter into your sampled page - presented on following screen.
-    <a href="images/02.01addingExpressionExtractor.png" target="_blank"><img src="images/02.01addingExpressionExtractor.png" alt="jMeter adding regular expression extractor"/></a>
+    <a href="images/02.01addingExpressionExtractor.png" target="_blank"><img src="images/02.01addingExpressionExtractor.png" alt="jMeter adding regular expression extractor"/></a><br/>
 
-    After that, you should configure the new element. It's simple! 
+    After that, you should configure the new element. It's simple! You have to specify your variable name.
+    I'm using now URLS as name. Result of regular expression extractor will be available as ${URLS}.
+    We have also a pattern which looks like:
 
-    <a href="images/02.01.contentOfExtractor.png" target="_blank"><img src="images/02.01.contentOfExtractor.png" alt="configuring regular expression extractor"/></a>
+    <xmp><a href="([^"]+)"></xmp>
 
-    <a href="images/02.01.samplerBasedOnVariable.png" target="_blank"><img src="images/02.01.samplerBasedOnVariable.png" alt="sampler with dynamic url"/></a>
+    and it means - give me all characters between quotation marks. In this case it'll be URL address.
+    Next important parameter is a template. It's a order of your regex "unknown value".
+    We have got only one parameter so template looks like $1$. But sometime you have more than one value.
+    Then you have to use $1$$2$$3$. You can do what you want :) For example: thisis$3$and$2$sth$1$.
+    It's easy way to transform regex result.
+
+
+
+
+    <a href="images/02.01.contentOfExtractor.png" target="_blank"><img src="images/02.01.contentOfExtractor.png" alt="configuring regular expression extractor"/></a><br/>
+
+    <a href="images/02.01.samplerBasedOnVariable.png" target="_blank"><img src="images/02.01.samplerBasedOnVariable.png" alt="sampler with dynamic url"/></a><br/>
 
 </p>
           <div id="disqus_thread"></div>
