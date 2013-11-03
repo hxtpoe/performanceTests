@@ -3,11 +3,11 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Performance tests : Simple 5 users test using jmeter HTTP sampler" />
+    <meta name="description" content="Performance tests : extract information from response" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Simple 5 users test using jmeter HTTP sampler</title>
+    <title>Extract information from response</title>
   </head>
 
   <body>
@@ -17,8 +17,8 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/hxtpoe/performanceTests">View on GitHub</a>
 
-          <h1 id="project_title"><a href="http://hxtpoe.github.io/performanceTests/">Simple 5 users test using jmeter HTTP sampler</a></h1>
-          <h2 id="project_tagline">Performance testing Symfony2 application using jMeter</h2>
+          <h1 id="project_title"><a href="http://hxtpoe.github.io/performanceTests/">extract information from response</a></h1>
+          <h2 id="project_tagline">using Regular Expression Extractor & ForEach controller </h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/hxtpoe/performanceTests/zipball/master">Download this project as a .zip file</a>
@@ -31,47 +31,18 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
 
-<!--<pre><code>$ cd your_repo_root/repo_name-->
-<!--$ git fetch origin-->
-<!--$ git checkout gh-pages-->
-<!--</code></pre>-->
-
 <p>
-    After this lesson you will be able to prepare simple test of http response.
+    Sometimes you want to click in each link on page. You need to extract URL from response.
+    It'll be simple if you have basic knowledge of RegExp.
+    If you don't know what the RegExp is, please look at <a href="http://www.regexbuddy.com/" rel="nofollow">RegexBuddy.com</a>.
+    You need to add Regural Expression Extracter into your sampled page - presented on following screen.
+    <a href="images/02.01addingExpressionExtractor.png" target="_blank"><img src="images/02.01addingExpressionExtractor.png" alt="jMeter adding regular expression extractor"/></a>
 
-    Always be careful when you run tests. It's easy to kill a server! This is why we only use 5 threads in this test.
-    I'm currently working on vagrant box for you, then you will be able to kill your VM, but not your whole workstation.
-    Secondly, never run all your threads in one second.
-    You should specify "your ramp-up time" (red color on following screen).
-    It'll usually kill your enviroument but it doesn't mean that your application works bad.
-    It's sth like DDoS. Add "result tree" (blue color on following screen) element when you work on your scenario.
-    It'll be easier to know how your test works.
+    After that, you should configure the new element. It's simple! 
 
-    <a href="images/01.00.numberOfThreads.png" target="_blank"><img src="images/01.00.numberOfThreads.png" alt="jMeter number of threads"/></a>
+    <a href="images/02.01.contentOfExtractor.png" target="_blank"><img src="images/02.01.contentOfExtractor.png" alt="configuring regular expression extractor"/></a>
 
-    On following screen you can see how to add HTTP sampler element.
-    This is one way to add all samplers to your test. So this is first and last time when I commit the screen;)
-    Next time I'll give you only a sampler name.
-    If you use http request defaults form 00 lesson, you only have to specify your path in the test.
-    In my app I have lorem ipsum page on address /. This is why my path is emtpy.
-
-    <a href="images/01.00a.addingSampler.png" target="_blank"><img src="images/01.00a.addingSampler.png" alt="how to add sampler in jmeter"/></a>
-
-    The most important think is to be sure about server response(following screen).
-    If application is writen in realy bad way, it's possible that you see empty response with 200 response code.
-    Always write simple assertion for your test. Your tests will be reliable.
-    In the example response must contain header with "Lorem ipsum dolor sit amet" text.
-
-    <a href="images/01.01.responseAssertion.png" target="_blank"><img src="images/01.01.responseAssertion.png" alt="response assertion in jmeter"/></a>
-
-    Next screen shows you results tree element. You can find this in add > listener > add result tree.
-    Violet color shows you really good fixture. You can render response as html page.
-    It's more comfortable. You don't have to work only with HTML code. But remember, jMeter is not a browser.
-    The app only download resource from your path. jMeter doesn't dowload resources like CSS, JS.
-    You can specify that you would like to always download resource like those.
-
-    <a href="images/01.02.resultTree.png" target="_blank"><img src="images/01.02.resultTree.png" alt="jmeter result tree"/></a>
-
+    <a href="images/02.01.samplerBasedOnVariable.png" target="_blank"><img src="images/02.01.samplerBasedOnVariable.png" alt="sampler with dynamic url"/></a>
 
 </p>
           <div id="disqus_thread"></div>
@@ -98,7 +69,7 @@
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">Performance Tests maintained by <a href="https://github.com/hxtpoe">hxtpoe</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        <p>Published with <a href="http://pages.github.com" rel="nofollow">GitHub Pages</a></p>
       </footer>
     </div>
 
