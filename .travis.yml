@@ -6,6 +6,7 @@ services:
 script: phpunit -c app/
 before_script:
   - phpenv config-add php.ini
+  - mongo jmeter --eval 'db.addUser("travis", "test");'
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
   - php app/console cache:clear --env=prod

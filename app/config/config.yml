@@ -66,8 +66,10 @@ doctrine_mongodb:
     connections:
         default:
             server: mongodb://localhost:27017
-            options: {}
-    default_database: jmeter
+            options:
+                username: %mongodb_user%
+                password: %mongodb_password%
+    default_database: %mongodb_name%
     document_managers:
         default:
             auto_mapping: true
