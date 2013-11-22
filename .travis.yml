@@ -5,7 +5,7 @@ services:
   - mongodb
 script: phpunit -c app/
 before_script:
-  - before_script: phpenv config-add php.ini
+  - phpenv config-add php.ini
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
   - php app/console cache:clear --env=prod
