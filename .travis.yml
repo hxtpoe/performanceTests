@@ -6,3 +6,5 @@ before_script:
   - cp app/config/parameters.yml.dist app/config/parameters.yml
   - composer install
   - php app/console cache:clear --env=prod
+services:
+  - mongodb
