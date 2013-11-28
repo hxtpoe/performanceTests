@@ -9,8 +9,13 @@ Vagrant.configure("2") do |config|
   config.vm.network :private_network, ip: "192.168.33.11"
   config.vm.synced_folder "files/", "/vagrant_files/"
   
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.manifest_file  = "init.pp"
   end
+  
 end

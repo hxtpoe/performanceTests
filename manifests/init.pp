@@ -1,7 +1,7 @@
 class php5 {
 	$version = '55w' # or 54w or empty
-	
-	exec {"add_webtatic_repo" : 
+
+	exec {"add_webtatic_repo" :
 		path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
 		command => 'rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm',
 		user 	=> 'root',
@@ -49,55 +49,52 @@ enabled=1",
 	 		ensure => installed;
 	 	"php${version}-opcache.x86_64" :
 	 		ensure => installed;
-		"mongo-10gen-server" :
+		"mongodb-org-server.x86_64" :
 	 		ensure => installed;
-		"mongo-10gen" :
+		"mongodb-org.x86_64" :
 	 		ensure => installed;
  		"git" :
  			ensure => installed;
 	}
 	->
-	exec {"install_composer" : 
+	exec {"install_composer" :
 		path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
 		command => 'curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer',
 		user 	=> 'root',
 		creates => '/usr/local/bin/composer',
 	}
-    ->
-	exec {"install_mongo_from_pecl" : 
+	->
+	exec {"install_mongo_from_pecl" :
 		path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
 		command => 'pecl install mongo',
 		user 	=> 'root',
 		creates => '/usr/lib64/php/modules/mongo.so',
 	}
 	->
-	exec {'init_php_config':
+	exec {'add_json.ini':
 		path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
-		command => 'rm /etc/php.ini && cp /vagrant_files/php.ini /etc/', 
+		command => 'printf "\npriority=20\nextension=json.so \n" > /etc/php.d/json.ini',
 		user 	=> 'root',
-		notify 	=> Service[httpd]
-    }
-    
-	exec {'remove_php_config':
-		path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
-		command => 'rm /etc/php.ini', 
-		user 	=> 'root',
+		notify 	=> Service[httpd],
+		creates => '/etc/php.d/json.ini'
     }
     ->
-	file {'update_php_config':
-		path 	=> '/etc/php.ini',
-        source 	=> '/vagrant_files/php.ini',
-        force 	=> true,
-        notify 	=> Service[httpd]
-    }
+	exec {'add_mongo.ini':
+		path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
+		command => 'printf "\npriority=30\nextension=mongo.so \n" > /etc/php.d/mongo.ini',
+		user 	=> 'root',
+		notify 	=> Service[httpd],
+		creates => '/etc/php.d/mongo.ini',
+	}
 
     file { "/var/www/html/jmeter":
     	ensure 	=> "directory",
     	owner  	=> "vagrant",
+    	group  	=> "vagrant",
     	mode   	=> 775,
 	}
 	->
-    exec {'clone_project' : 
+    exec {'clone_project' :
     	path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
     	command => 'git clone https://github.com/hxtpoe/performanceTests.git /var/www/html/jmeter/',
    		creates => '/var/www/html/jmeter/.git/',
@@ -112,6 +109,13 @@ enabled=1",
         hasstatus 	=> true,
 	}
 
+    service {'mongod' :
+        ensure      => running,
+        enable      => true,
+        hasrestart  => true,
+        hasstatus   => true,
+    }
+
 	exec {"add_new_rule" :
         path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
         command => 'iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT',
@@ -123,7 +127,7 @@ enabled=1",
         command => 'service iptables save',
         user    => 'root'
 	}
-    -> 
+    ->
 	exec {"restart_iptables" :
         path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
         command => 'service iptables restart',
