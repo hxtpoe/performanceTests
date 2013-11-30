@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Prepare virtual environment for performance tests</title>
+    <meta name="description"
+          content="Performance tests tutorial on prepared virtual machine based on Centos, Vagrant and Puppet. How to provision virtual machine"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="https://github.com/hxtpoe/performanceTests">View on GitHub</a>
+
+        <h1 id="project_title"><a href="http://hxtpoe.github.io/performanceTests/">Prepare virtual environment for
+            performance tests using Vagrant</a></h1>
+
+        <h2 id="project_tagline">Centos6.4 with PHP&MongoDB, Vagrant, Puppet</h2>
+
+        <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/hxtpoe/performanceTests/zipball/master">Download this
+                project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/hxtpoe/performanceTests/tarball/master">Download this
+                project as a tar.gz file</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+
+        <p>
+            I'm so pround you are here. First of all.. In this short document you have simple instruction how to run
+            live tutorial. You can do this tutorial on live examples.
+            All you need is to install Vagrant in the newest version (I'm using Vagrant 1.3.5 for OSX) You can choose
+            your package <a href="http://downloads.vagrantup.com/tags/v1.3.5" rel="nofollow">here</a>.
+            You also need a Virtualbox (I'm using <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox 4.3.4
+            for OSX</a>)
+        </p>
+
+        <p>
+            Now you can download my <a href="https://github.com/hxtpoe/performanceTests/archive/virtualMachine.zip">vagrant
+            environment configuration files</a>.
+            Extract the package and open the directory in your terminal.
+
+
+        </p>
+
+        <p>
+            <img src="images/vagrant-up-provisioning.png" alt="vagrant up" />
+        </p>
+
+        <p>
+            Then run:
+            <strong>vagrant up</strong>. It'll last a few minutes. Vagrant have to download a vagrant box from the web.
+            During provisioning also php5.5.x and MongoDb will be installed. Be patient.. :)
+            You can follow status in the terminal.
+            You will see a lot of information like:
+        <pre>Notice: /Stage[main]/Php5/Package[php55w.x86_64]/ensure: created</pre>
+
+        </p>
+        <p>
+            After all your log should looks like:
+        </p>
+
+        <p>
+            <img src="images/after-vagrant-up.png" alt="after vagrant provision"/>
+        </p>
+
+        <p>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- PerformanceTestsContextBaner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9549588994336991"
+                 data-ad-slot="3771502750"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </p>
+        <p>
+            Using <strong>vagrant ssh</strong> command you can log in via ssh to the virtual machine.
+            Then go to the project files in /var/www/html/jmeter using <strong>cd /var/www/html/jmeter</strong> command
+            and run <strong>sh setup.sh</strong>
+            Follow the screen because sometimes you have to put your github credentials to clone vendors by composer
+            (It's github API security case)
+        </p>
+
+        <p>
+            Using <strong>vagrant ssh</strong> command you can log in via ssh to the virtual machine.
+            Then go to the project files in /var/www/html/jmeter using <strong>cd /var/www/html/jmeter</strong> command
+            and run <strong>sh setup.sh</strong>
+            Follow the screen because sometimes you have to put your github credentials to clone vendors by composer
+            (It's github API security case)
+        </p>
+
+        <p>
+            If script end installing vendors you will be able to run application on address <a
+                href="http://192.168.33.11/jmeter/web/app_dev.php"
+                rel="nofollow">192.168.33.11/jmeter/web/app_dev.php</a>.
+        </p>
+
+        <p>
+            <img src="images/after-project-setup-screen.png"/>
+        </p>
+
+        <p>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- PerformanceTestsContextBaner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9549588994336991"
+                 data-ad-slot="3771502750"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </p>
+        <p>
+            <img src="images/app-preview.png" alt="Symfony2 app preview"/>
+        </p>
+
+        <p>
+            You have also phpinfo() available on <a href="http://192.168.33.11/" rel="nofollow">192.168.33.11</a>.
+        </p>
+
+        <p>
+            <img src="images/phpinfo.png" alt="phpinfo screen"/>
+        </p>
+
+
+        <p>
+            After work all you need is to run <strong>vagrant halt</strong>. Next time you can run vagrant faster. Use
+            --no-provision parameter. <strong>vagrant up --no-provision</strong>
+        </p>
+
+        <p>
+
+            If it was your first time with Vagrant.. now you know what it means ;)<br/>
+            <strong>When you see Vagrant..</strong>
+        </p>
+
+        <p>
+            <a href="http://devopsreactions.tumblr.com/post/49347903968/when-you-see-vagrant" rel="nofollow"><img
+                    src="http://i.imgur.com/m7XnClU.gif" alt="When you see Vagrant"></a><br/>
+            source: http://devopsreactions.tumblr.com
+        </p>
+
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'performancetesttutorial'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </section>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        <p class="copyright">Performance Tests maintained by <a href="https://github.com/hxtpoe">hxtpoe</a></p>
+
+        <p>Published with <a href="http://pages.github.com" rel="nofollow">GitHub Pages</a></p>
+    </footer>
+</div>
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-45397900-1");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }
+</script>
+
+</body>
+</html>
