@@ -1,119 +1,136 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Performance tests : Performance testing Symfony2 application using jMeter" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
+<head>
+    <meta charset='utf-8'/>
     <title>jMeter and Symfony2 performance tests tutorial</title>
-  </head>
+    <meta name="description" content="Performance testing Symfony2 application using jMeter. How to measure your application speed"/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+</head>
 
-  <body>
+<body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/hxtpoe/performanceTests">View on GitHub</a>
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="https://github.com/hxtpoe/performanceTests">View on GitHub</a>
 
-          <h1 id="project_title"><a href="http://hxtpoe.github.io/performanceTests/">Making performance tests tutorial</a></h1>
-          <h2 id="project_tagline">Performance testing Symfony2 application using jMeter</h2>
+        <h1 id="project_title"><a href="http://hxtpoe.github.io/performanceTests/">Performance tests tutorial</a>
+        </h1>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/hxtpoe/performanceTests/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/hxtpoe/performanceTests/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <h2 id="project_tagline">Performance testing Symfony2 application using jMeter. How to simulate load on pre-production environment</h2>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+        <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/hxtpoe/performanceTests/zipball/master">Download this
+                project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/hxtpoe/performanceTests/tarball/master">Download this
+                project as a tar.gz file</a>
+        </section>
+    </header>
+</div>
 
-<!--<pre><code>$ cd your_repo_root/repo_name-->
-<!--$ git fetch origin-->
-<!--$ git checkout gh-pages-->
-<!--</code></pre>-->
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
 
-<h3>
-  <a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>TOC</h3>
-<p>
-<ol>
-  <li><a href="prepere-virtual-environment-for-performance-tests.html">prepare our own virtual environment in a few minutes</a></li>
-  <li><a href="00.Introduction_to_jMeter.html">introduction to configure elements and test tree</a></li>
-  <li><a href="01.testing_simple_static_content_page.html">testing simple static content page</a></li>
-  <li><a href="02.extract_information_from_response.html">extract information from response</a></li>
-</ol>
+        <h3>
+            <a name="designer-templates" class="anchor" href="#designer-templates"><span
+                    class="octicon octicon-link"></span></a>TOC</h3>
 
-</p>
+        <p>
+        <ol>
+            <li><a href="prepere-virtual-environment-for-performance-tests.html">prepare our own virtual environment in
+                a few minutes</a></li>
+            <li><a href="00.Introduction_to_jMeter.html">introduction to configure elements and test tree</a></li>
+            <li><a href="01.testing_simple_static_content_page.html">testing simple static content page</a></li>
+            <li><a href="02.extract_information_from_response.html">extract information from response</a></li>
+        </ol>
+
+        </p>
+
+        <h3>
+            <a name="designer-templates" class="anchor" href="#designer-templates"><span
+                    class="octicon octicon-link"></span></a>About the project</h3>
+
+        <p><a href="https://travis-ci.org/hxtpoe/performanceTests"><img
+                src="https://travis-ci.org/hxtpoe/performanceTests.png?branch=master" alt="Build Status"
+                style="max-width:100%;"></a></p>
+
+        <p>If you'are looking for information about performance testing Symfony2 application using jMeter - you're in
+            right place now.
+            What is jMeter? jMeter is a great tool to create a stress/performance tests. You can also use the tool to
+            security testing.
+            <a href="http://jmeter.apache.org/usermanual/">Here</a> you've got an official documentation.
+            But in this tutorial you have got live test example with description.
+            If you go through all lessons - you will be able to performance testing your web app.<br/><br/>
+            Enjoy and feel free to ask me a question.
+
+        </p>
+
+        <a class="twitter-timeline" href="https://twitter.com/hxtpoe" data-widget-id="396807135654211586">Tweety na
+            temat @hxtpoe</a>
+        <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + "://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, "script", "twitter-wjs");</script>
 
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>About the project</h3>
-<p><a href="https://travis-ci.org/hxtpoe/performanceTests"><img src="https://travis-ci.org/hxtpoe/performanceTests.png?branch=master" alt="Build Status" style="max-width:100%;"></a></p>
-
-<p>If you'are looking for information about performance testing Symfony2 application using jMeter - you're in right place now.
-    What is jMeter? jMeter is a great tool to create a stress/performance tests. You can also use the tool to security testing.
-    <a href="http://jmeter.apache.org/usermanual/">Here</a> you've got an official documentation.
-    But in this tutorial you have got live test example with description.
-    If you go through all lessons - you will be able to performance testing your web app.<br/><br/>
-    Enjoy and feel free to ask me a question.
-
-</p>
-
-          <a class="twitter-timeline" href="https://twitter.com/hxtpoe" data-widget-id="396807135654211586">Tweety na temat @hxtpoe</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <div style="float: right;">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:250px;height:250px"
+                 data-ad-client="ca-pub-9549588994336991"
+                 data-ad-slot="2294769556"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
 
 
-          <div style="float: right;">
-              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-              <ins class="adsbygoogle"
-                   style="display:inline-block;width:250px;height:250px"
-                   data-ad-client="ca-pub-9549588994336991"
-                   data-ad-slot="2294769556"></ins>
-              <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-          </div>
+        <h3>
+            <a name="designer-templates" class="anchor" href="#designer-templates"><span
+                    class="octicon octicon-link"></span></a>In the future..</h3>
 
+        <p>
+        <ol>
+            <li>Login using FOS User Bundle</li>
+            <li>Import csv files</li>
+            <li>How to test AJAX actions</li>
+            <li>Remote testing</li>
+            <li>Testing JDBC connection</li>
+        </ol>
 
-<h3>
-  <a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>In the future..</h3>
+        </p>
 
-<p>
-<ol>
-  <li>Login using FOS User Bundle</li>
-  <li>Import csv files</li>
-  <li>How to test AJAX actions</li>
-  <li>Remote testing</li>
-  <li>Testing JDBC connection</li>
-</ol>
+    </section>
+</div>
 
-</p>
-
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
         <p class="copyright">Performance Tests maintained by <a href="https://github.com/hxtpoe">hxtpoe</a></p>
+
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+    </footer>
+</div>
 
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-45397900-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-45397900-1");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }
+</script>
 
 
-  </body>
+</body>
 </html>
