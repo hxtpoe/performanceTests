@@ -33,7 +33,7 @@
 <!-- MAIN CONTENT -->
 <div id="main_content_wrap" class="outer">
     <section id="main_content" class="inner">
-
+        <h2>Configure virtual environment</h2>
         <p>
             I'm so pround you are here. First of all.. In this short document you have simple instruction how to run
             live tutorial. You can do this tutorial on live examples.
@@ -92,14 +92,6 @@
         </p>
 
         <p>
-            Using <strong>vagrant ssh</strong> command you can log in via ssh to the virtual machine.
-            Then go to the project files in /var/www/html/jmeter using <strong>cd /var/www/html/jmeter</strong> command
-            and run <strong>sh setup.sh</strong>
-            Follow the screen because sometimes you have to put your github credentials to clone vendors by composer
-            (It's github API security case)
-        </p>
-
-        <p>
             If script end installing vendors you will be able to run application on address <a
                 href="http://192.168.33.11/jmeter/web/app_dev.php"
                 rel="nofollow">192.168.33.11/jmeter/web/app_dev.php</a>.
@@ -148,6 +140,16 @@
             <a href="http://devopsreactions.tumblr.com/post/49347903968/when-you-see-vagrant" rel="nofollow"><img
                     src="http://i.imgur.com/m7XnClU.gif" alt="When you see Vagrant"></a><br/>
             source: http://devopsreactions.tumblr.com
+        </p>
+
+        <h2>Mount remote resource via SSH</h2>
+        <p>
+            If you would like to make some changes in the project, you can mount remote virual directory using sshfs (you need Fuse package).
+            After ensuring that you've got it, run:<br/>
+            <strong>
+                sshfs vagrant@192.168.33.11:/var/www/html/jmeter/ /path/to/your/local/directory -ocache=no
+            </strong><br/>
+            After that you will be able to open project in your IDE.
         </p>
 
 
