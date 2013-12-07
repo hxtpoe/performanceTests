@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    <title>Debuging jMeter tests</title>
+    <meta name="description" content="How to use debug mode in jMeter. Using Debug PostProcessor and console log in scripts"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="https://github.com/hxtpoe/performanceTests">View on GitHub</a>
+
+        <h1 id="project_title"><a href="http://hxtpoe.github.io/performanceTests/">Debuging jMeter scripts</a></h1>
+
+        <h2 id="project_tagline">How to debug jMeter?</h2>
+
+        <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/hxtpoe/performanceTests/zipball/master">Download this
+                project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/hxtpoe/performanceTests/tarball/master">Download this
+                project as a tar.gz file</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+
+        <h2>Debug PostProcessor</h2>
+        <p>
+            To add "break point" you can click right on your test three. The path to the element looks like: <strong>Add > Post Processors > Debug PostProcessor</strong> Add this element into the place which you want to debug. 
+        </p>
+        <p>
+            <a href="images/debug.png" target="_blank"><img src="images/debug.png"
+                                                                            alt="jMeter debug"/></a>
+        </p>
+        <p>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- PerformanceTestsContextBaner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9549588994336991"
+                 data-ad-slot="3771502750"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </p>
+        <p>Next, run your test. In view result three you can find your debug information. On following screen you see URLS array from previous lesson. As you can see there is nothing easier than debuging ;)
+        </p>
+        <p>
+            <a href="images/debuging-result.png" target="_blank"><img src="images/debuging-result.png"
+                                                                            alt="jMeter debug"/></a>
+        </p>
+        <p>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- PerformanceTestsContextBaner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9549588994336991"
+                 data-ad-slot="3771502750"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </p>
+        <h2>Console log (BSF PostProcessor)</h2>
+        <p>
+            Sometimes you need debug your post processor script or you don't have an access to GUI mode. Then you can use "console log".
+            Firstly, run jmeter from command line. Using <strong>sh jmeter</strong> command in <strong>/yourjmeterdirectory/bin</strong>.
+            Secondly, add Post procesor BSF into your HTTP request. You can find the element in <strong>add > post processors > BSF PostProcessor</strong>.
+            In this element you can write a lot of "magic". Here  you can also process your data and prepare data for next test. But now I'll show you only writing on console log. It's great that you can choose your language. I'm using javascript now. 
+        </p>
+        <p>
+            <a href="images/console-log.png" target="_blank"><img src="images/console-log.png"
+                                                                           alt="console log in jmeter"/></a>
+        </p>
+        <p>
+            This simple code gets script variable and prints the value on console. 
+        </p>
+          <p>
+            <a href="images/debug-on-console.png" target="_blank"><img src="images/debug-on-console.png"
+                                                                           alt="debug result on console"/></a>
+        </p>
+        <p>
+            It's time to debug something.. Don't forget to send me a feedback using Discus.
+        </p>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'performancetesttutorial'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </section>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        <p class="copyright">Performance Tests maintained by <a href="https://github.com/hxtpoe">hxtpoe</a></p>
+
+        <p>Published with <a href="http://pages.github.com" rel="nofollow">GitHub Pages</a></p>
+    </footer>
+</div>
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-45397900-1");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }
+</script>
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52a25bda3afefcad"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'twitter', 'id': 'hxtpoe'},
+        {'service': 'linkedin', 'id': 'hxtpoe'}
+      ]
+    }   
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
+
+</body>
+</html>
