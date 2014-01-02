@@ -1,8 +1,3 @@
-iit_user:
-    resource: "@IITUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 iit_content:
     resource: "@IITContentBundle/Controller/"
     type:     annotation
