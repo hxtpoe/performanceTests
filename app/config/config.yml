@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -50,11 +50,13 @@ swiftmailer:
 doctrine_mongodb:
     connections:
         default:
-            server: mongodb://localhost:27017
-            options:
-                username: %mongodb_user%
-                password: %mongodb_password%
+            server: "mongodb://%mongodb_user%:%mongodb_password%@localhost:27017/%mongodb_name%"
     default_database: %mongodb_name%
     document_managers:
         default:
             auto_mapping: true
+
+fos_user:
+    db_driver: mongodb
+    firewall_name: main
+    user_class: IIT\UserBundle\Document\User

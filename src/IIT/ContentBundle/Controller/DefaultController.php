@@ -32,4 +32,12 @@ class DefaultController extends Controller
     {
         return array('id' => $id);
     }
+    /**
+     * @Route("/secured/index.html")
+     * @Template()
+     */
+    public function securedAction()
+    {
+        return array();
+    }
 }
