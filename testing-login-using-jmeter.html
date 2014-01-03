@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>Testing authorization using jMeter</title>
+    <meta name="description"
+          content="Simple tutorial about testing login page using jMeter. How to log in using jMeter to my WebApp. Using jquery extractor in jMeter."/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="https://github.com/hxtpoe/performanceTests">View on GitHub</a>
+
+        <h1 id="project_title"><a href="http://hxtpoe.github.io/performanceTests/">Testing authorization using jMeter</a></h1>
+
+        <h2 id="project_tagline">testing FOSUserBundle, jMeter Cookie Manager, jQuery Extractor</h2>
+
+        <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/hxtpoe/performanceTests/zipball/master">Download this
+                project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/hxtpoe/performanceTests/tarball/master">Download this
+                project as a tar.gz file</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <h2>Log in into Symfony2 app</h2>
+        <p>
+            Remember! The most important think is to add jMeter cookie manager. Without it - you never won't logged in.
+            You can find this element in "Config Elements". The element simulates browser behaviour.
+            If you don't know a HTTP protocol pretty well, after this lesson you will see how internet browsers work.
+        </p>
+        <p>
+            <a href="images/login-cookie-manager.png"><img src="images/login-cookie-manager.png" alt="jmeter cookie manager" /></a>
+        </p>
+        <p>
+            It was simple cookie manager. I'm not going to write a lot about the element, because it works without any additional configuration.
+            For more information, please visit <a href="http://jmeter.apache.org/usermanual/component_reference.html#HTTP_Cookie_Manager">documentation</a>.
+        </p>
+        <p>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- PerformanceTestsContextBaner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9549588994336991"
+                 data-ad-slot="3771502750"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </p>
+        <h2>CSS/jQuery extractor</h2>
+        <p>
+            Symfony2 applications' forms are secured by csfr token (Cross-site request forgery). Each form contains additional hidden field (_token).
+            We need to extract the token from response, this is why we're using jQuery extractor.
+            If you send form without token or with invalid token you receive "invalid csrf token" exception.
+            You can disable this protection.. but it's not recommended.
+            Dollar separator works exactly the same as in <a href="http://hxtpoe.github.io/performanceTests/extract-information-from-response.html">extract information from response</a>.
+            Now I need the <strong>value</strong> of input with a name "_csfr_token"
+            <code>
+                input[name=_csrf_token]
+            </code>
+        </p>
+        <p>
+            The value will be available in variable TOKEN (use ${TOKEN})
+        </p>
+        <p>
+            <a href="images/login-jquery-extractor.png"><img src="images/login-jquery-extractor.png" alt="jmeter jquery extractor" /></a>
+        </p>
+        <h2>Send POST request with parameters</h2>
+        <p>
+            On the screen you can see how to add parameters to request.
+            You can't send login credentials as first step.
+            Symfony2 application needs to handle some request before you will be able to log in (security).
+            If you'll see "Your session has timed out, or you have disabled cookies" it means that you've forgotten about it.
+            Extracting token without requesting app is imposible :)
+        </p>
+        <p>
+            <a href="images/login-send-form.png"><img src="images/login-send-form.png" alt="send post request in jmeter" /></a>
+        </p>
+
+        <p>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- PerformanceTestsContextBaner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9549588994336991"
+                 data-ad-slot="3771502750"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </p>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'performancetesttutorial'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </section>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        <p class="copyright">Performance Tests maintained by <a href="https://github.com/hxtpoe">hxtpoe</a></p>
+
+        <p>Published with <a href="http://pages.github.com" rel="nofollow">GitHub Pages</a></p>
+    </footer>
+</div>
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-45397900-1");
+        pageTracker._trackPageview();
+    } catch (err) {
+    }
+</script>
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52a25bda3afefcad"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'twitter', 'id': 'hxtpoe'},
+        {'service': 'linkedin', 'id': 'hxtpoe'}
+      ]
+    }   
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
+</body>
+</html>
