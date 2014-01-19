@@ -2,12 +2,11 @@
 <html>
 <head>
     <meta charset='utf-8'/>
+    <title>Import data from CSV files</title>
+    <meta name="description"
+          content="A few information about importing CSV files into jMeter scenario. How to simulate user's load on my application"/>
     <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
-    <meta name="description" content="Simple 5 users test using jmeter HTTP sampler. How to generate working apps' users"/>
-
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Simple 5 users test using jmeter HTTP sampler</title>
 </head>
 
 <body>
@@ -17,10 +16,9 @@
     <header class="inner">
         <a id="forkme_banner" href="https://github.com/hxtpoe/performanceTests">View on GitHub</a>
 
-        <h1 id="project_title"><a href="http://hxtpoe.github.io/performanceTests/">Simple 5 users test using jmeter HTTP
-            sampler</a></h1>
+        <h1 id="project_title"><a href="http://hxtpoe.github.io/performanceTests/">Using data from CSV files</a></h1>
 
-        <h2 id="project_tagline">managing a number of threads</h2>
+        <h2 id="project_tagline">import from CSV</h2>
 
         <section id="downloads">
             <a class="zip_download_link" href="https://github.com/hxtpoe/performanceTests/zipball/master">Download this
@@ -38,26 +36,14 @@
             <a href="http://hxtpoe.github.io/performanceTests/">&#139; back to table of content</a>
         </p>
         <p>
-            <a href="https://github.com/hxtpoe/performanceTests/blob/master/scenarios/01-sample%20request/lesson01.jmx">Here</a> you've got lessons' files.
+            <a href="https://github.com/hxtpoe/performanceTests/blob/master/scenarios/05-csv/lesson05.jmx">Here</a> you've got lessons' files.
         </p>
-        <h2>HTTP request</h2>
+        <h2>Intro</h2>
         <p>
-            After this lesson you will be able to prepare simple test of http response.
-
-            Always be careful when you run tests. It's easy to kill a server! This is why we only use 5 threads in this
-            test.
-            I'm currently working on vagrant box for you, then you will be able to kill your VM, but not your whole
-            workstation.
-            Secondly, never run all your threads in one second.
-            You should specify "your ramp-up time" (red color on following screen).
-            It'll usually kill your enviroument but it doesn't mean that your application works bad.
-            It's sth like DDoS. Add "result tree" (blue color on following screen) element when you work on your
-            scenario.
-            It'll be easier to know how your test works.
+            Today there is no change in source code ;) It'll be continuation of the last lesson about authorization. But you can use CSV files not only for authorization. Sometimes you need to send form with correct (different) data. You can also control your tests by files. There is no problem to read URL from file and send requests from jMeter. Believe me - you're free! I hope you know sth about CSV file format. But if you don't - it's so simple. New line is like a record. And the data (columns) are usually separated by commas. You can prepare data in Excel and save it as CSV file. It's simple and popular format.
         </p>
         <p>
-            <a href="images/01.00.numberOfThreads.png" target="_blank"><img src="images/01.00.numberOfThreads.png"
-                                                                            alt="jMeter number of threads"/></a>
+            <a href="images/csv.png"><img src="images/csv.png" alt="jmeter csv"/></a>
         </p>
         <p>
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -70,45 +56,41 @@
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </p>
+        <h2>Using CSV in jMeter</h2>
         <p>
-            On following screen you can see how to add HTTP sampler element.
-            This is one way to add all samplers to your test. So this is first and last time when I commit the screen;)
-            Next time I'll give you only a sampler name.
-            If you use http request defaults form 00 lesson, you only have to specify your path in the test.
-            In my app I have lorem ipsum page on address /. This is why my path is emtpy.
+            You can add find this element in config elements. It's <strong>CSV data set config.</strong>.
+            It's simple to configure the element. Put only variable names into config and then use the variable in your script.
+            Look at following screens..
         </p>
         <p>
-            <a href="images/01.00a.addingSampler.png" target="_blank"><img src="images/01.00a.addingSampler.png"
-                                                                           alt="how to add sampler in jmeter"/></a>
+            <a href="images/csv-data-set-config.png"><img src="images/csv-data-set-config.png" alt="csv data set config" /></a>
         </p>
-        <h2>Response Assertion</h2>
         <p>
-            The most important think is to be sure about server response(following screen).
-            If application is writen in realy bad way, it's possible that you see empty response with 200 response code.
-            Always write simple assertion for your test. Your tests will be reliable.
-            In the example response must contain header with "Lorem ipsum dolor sit amet" text.
+            <a href="images/csv-send-form.png"><img src="images/csv-send-form.png" alt="csv send form" /></a>
+        </p>
+        <p>
+            Here you've got result preview. As you can see it's user2's login action.
+        </p>
+        <p>
+            <a href="images/csv-result.png"><img src="images/csv-result.png" alt="csv result" /></a>
+        </p>
+        
+        <p>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- PerformanceTestsContextBaner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9549588994336991"
+                 data-ad-slot="3771502750"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </p>
 
-        <p>
-            <a href="images/01.01.responseAssertion.png" target="_blank"><img src="images/01.01.responseAssertion.png"
-                                                                              alt="response assertion in jmeter"/></a>
-        </p>
-
-        <p>
-            Next screen shows you results tree element. You can find this in add > listener > add result tree.
-            Violet color shows you really good fixture. You can render response as html page.
-            It's more comfortable. You don't have to work only with HTML code. But remember, jMeter is not a browser.
-            The app only download resource from your path. jMeter doesn't dowload resources like CSS, JS.
-            You can specify that you would like to always download resource like those.
-        </p>
-
-        <p>
-            <a href="images/01.02.resultTree.png" target="_blank"><img src="images/01.02.resultTree.png"
-                                                                       alt="jmeter result tree"/></a>
-        </p>
         <p>
             <a href="http://hxtpoe.github.io/performanceTests/">&#139; back to table of content</a>
         </p>
+
         <div id="disqus_thread"></div>
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -170,7 +152,6 @@
   });
 </script>
 <!-- AddThis Smart Layers END -->
-
 
 </body>
 </html>
