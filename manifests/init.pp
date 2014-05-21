@@ -86,6 +86,13 @@ enabled=1",
 		notify 	=> Service[httpd],
 		creates => '/etc/php.d/mongo.ini',
 	}
+	->
+	exec {'set_timezone':
+		path    => "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/vagrant/bin",
+		command => 'printf "date.timezone = \"Europe/Warsaw\" \n" >> /etc/php.ini',
+		user 	=> 'root',
+		notify 	=> Service[httpd],
+	}
 
     file { "/var/www/html/jmeter":
     	ensure 	=> "directory",
