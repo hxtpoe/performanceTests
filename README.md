@@ -2,8 +2,7 @@ All you need is
 ================
 
 
-1. clone a whole project and run "git checkout virtualMachine"
-
+1. clone a whole project and run "git checkout vm"
 2. you can choose which web server you would like to test: nginx or apache.. It's the same Centos 6.4 with MongoDb server. 
 
 3. install vagrant and virtualbox (if you don't have)
